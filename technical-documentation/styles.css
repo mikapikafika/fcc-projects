@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto Mono", monospace;
+}
+
+body {
+    background-color: #E9ECF2;
+}
+
+/*--- NAVBAR ---*/
+
+#navbar a {
+    text-decoration: none;
+    color: #E9ECF2;
+}
+
+#navbar {
+    background: #7A96BF;
+    height: 6.5em;
+    width: 100%;
+    color: #E9ECF2;
+    padding: 1em 2em;
+    position: fixed;
+    top: 0;
+}
+
+#navbar header {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+#navbar ul {
+    list-style: none;
+    float: left;
+    margin-left: 2em;
+}
+
+#navbar ul li {
+    display: inline-block;
+    margin: 0 2.5em;
+}
+
+#navbar ul li .nav-link {
+    text-decoration: none;
+    color: #E9ECF2;
+    transition: ease .5s;
+}
+
+.nav-link:hover {
+    background: #AECAF2;
+    transition: ease .5s;
+    cursor: pointer;
+    padding: .5em 1em;
+    border-radius: 3px;
+}
+
+.nav-button {
+    font-size: 30px;
+    color: #E9ECF2;
+    float: left;
+    cursor: pointer;
+    display: none;
+}
+
+#nav-checkbox {
+    display: none;
+}
+
+@media (max-width: 800px) {
+    .nav-button {
+        display: block;
+    }
+
+    #navbar ul {
+        position: fixed;
+        width: 100%;
+        height: 26em;
+        background: #405472;
+        top: 6.5em;
+        text-align: center;
+        right: -100%;
+        transition: all .5s;
+    }
+
+    #navbar ul li {
+        display: block;
+        margin: 2em 0;
+    }
+
+    #nav-checkbox:checked ~ ul {
+        right: 0;
+    }
+}
+
+/*--- DOCUMENTATION ---*/
+
+.main-section {
+    margin: 3vw 25vw;
+    text-align: justify;
+    color: #333435;
+}
+
+#introduction {
+    margin-top: 10em;
+}
+
+.main-section img {
+    height: 400px;
+    width: auto;
+    border-radius: 5px;
+    margin: 2em 0;
+    box-shadow: inset 0 0 10px #000000;
+}
+
+.main-section header {
+    font-weight: 700;
+    font-size: 30px;
+    margin-top: 4em;
+}
+
+.main-section p {
+    margin: 1em 0;
+}
+
+.main-section h4{
+    margin: 1em 0;
+}
+
+.main-section h2 {
+    margin-top: 2em;
+}
+
+.main-section h1 {
+    font-weight: 700;
+    font-size: 40px;
+}
+
+.main-section pre {
+    background-color: #9FA2A6;
+    color: #E9ECF2;
+    padding: .5em;
+    border-radius: 5px;
+}
+
+.main-section p:last-child :not(#conclusion) {
+    margin-top: 3em;
+}
