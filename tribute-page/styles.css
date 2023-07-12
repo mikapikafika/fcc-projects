@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Ubuntu", sans-serif;
+}
+
+body {
+    background-color: #b8eae8;
+}
+
+.title-container {
+    margin: 0;
+    text-align: center;
+    background-color: #375a81;
+    padding: 3vw;
+    color: #fcfcfc;
+}
+
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 2vw auto;
+}
+
+figcaption {
+    text-align: center;
+    margin-bottom: 4vw;
+    font-weight: 700;
+    font-size: 30px;
+    color: #042434;
+}
+
+#tribute-info {
+    margin: 0 30vw;
+    font-size: 20px;
+    background-color: #dd69f0;
+    padding: 2vw;
+    border-radius: 5px;
+    color: #fcfcfc;
+    font-weight: 400;
+    text-align: justify;
+}
