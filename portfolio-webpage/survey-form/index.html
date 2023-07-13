@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G.O.A.T.</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=VT323&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1 id="title">G.O.A.T.</h1>
+        <p id="description">Generalized Occupational Aptitude Test</p>
+    </header>
+
+    <form id="survey-form">
+        <div class="input-element">
+            <label id="name-label" for="name">Name</label>
+            <input id="name" class="written-input" type="text" placeholder="Enter your name" required>
+        </div>
+        <div class="input-element">
+            <label id="email-label" for="email" required>E-mail</label>
+            <input id="email" class="written-input" type="email" placeholder="Enter your e-mail" required>
+        </div>
+        <div class="input-element">
+            <label id="number-label" for="number">Resident number (optional)</label>
+            <input id="number" class="written-input" type="number" placeholder="Enter your resident number" min="1" max="99">
+        </div>
+
+        <div class="dropdown-style">
+            <p>You are approached by a frenzied Vault scientist, who yells, "I'm going to put my quantum harmonizer 
+                in your photonic resonation chamber!" What's your response?</p>
+            <select id="dropdown">
+                <option disabled selected value>Select an option</option>
+                <option value="science">"But doctor, wouldn't that cause a parabolic destabilization of the fission singularity?"</option>
+                <option value="speech">"Yeah? Up yours too, buddy!"</option>
+                <option value="melee">Say nothing, grab a nearby pipe and hit the scientist in the head to knock him out. 
+                    For all you knew, he was planning to blow up the vault.</option>
+                <option value="sneak">Say nothing, but slip away before the scientist can continue his rant.</option>
+            </select>
+        </div>
+        <div class="radio-style">
+            <p>Your grandmother invites you to tea, but you're surprised when she gives you a pistol and orders you to kill another Vault resident. 
+                What do you do?</p>
+            <label><input name="weapon-question" value="small-guns" type="radio" checked>Obey your elder and kill the Vault resident with the pistol.</label>
+            <label><input name="weapon-question" value="barter" type="radio">Offer your most prized possession for the resident's life. </label>
+            <label><input name="weapon-question" value="big-guns" type="radio">Ask granny for a minigun instead. After all, you don't want to miss.</label>
+            <label><input name="weapon-question" value="explosives" type="radio">Throw your tea in granny's face.</label>
+        </div>
+        <div class="checkbox-style">
+            <p>Who is indisputably the most important person in Vault 101: He who shelters us from the harshness of the atomic wasteland, 
+                and to whom we owe everything we have, including our lives?</p>
+            <label><input value="overseer" type="checkbox">The Overseer</label>
+            <label><input value="overseer" type="checkbox">The Overseer</label>
+            <label><input value="overseer" type="checkbox">The Overseer</label>
+            <label><input value="overseer" type="checkbox">The Overseer</label>
+        </div>
+        <div class="textarea-style">
+            <p>A fellow Vault 101 resident is in possession of a Grognak the Barbarian comic book, issue number 1. You want it. What's the best way to obtain it?</p>
+            <textarea placeholder="Enter your response"></textarea>
+        </div>
+        <button id="submit" type="submit">Submit</button>
+    </form>
+</body>
+
+</html>
