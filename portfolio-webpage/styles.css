@@ -1,0 +1,223 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto Slab", serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+body {
+    background: #f5f2f2;
+}
+
+/*--- NAVBAR ---*/
+
+.navigation ul {
+    display: flex;
+    justify-content: flex-end;
+    top: 0;
+    width: 100%;
+    background: #ecf1f5;
+    color: #4554A3;
+    padding: 2em;
+}
+
+.navigation ul li {
+    margin: 0 3em;
+    text-transform: uppercase;
+}
+
+.navigation a {
+    transition: ease .5s;
+}
+
+.navigation a:hover {
+    background: #837ce4;
+    color: #ecf1f5;
+    transition: ease .5s;
+    cursor: pointer;
+    padding: .5em 1em;
+    border-radius: 3px;
+}
+
+/*--- WELCOME ---*/
+
+.welcome-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20vw;
+    background-image: linear-gradient(62deg, #FC5C7D 0%, #6A82FB 100%);
+    color: #ecf1f5;
+}
+
+.welcome-section h1 {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.welcome-section p {
+    font-weight: 400;
+    font-size: 30px;
+}
+
+/*--- PROJECTS ---*/
+
+.projects-section {
+    text-align: center;
+    padding: 9rem 2rem;
+    font-size: 20px;
+}
+
+.projects-section h2 {
+    margin-bottom: 1rem;
+    color: #bc6cbc;
+}
+
+.projects-gallery {
+    position: relative;
+    width: 1160px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    transform-style: preserve-3d;
+    perspective: 500px;
+    margin: auto;
+}
+
+.projects-gallery .box {
+    position: relative;
+    width: 275px;
+    height: 275px;
+    /* background: #000; */
+    transition: 0.5s;
+    transform-style: preserve-3d;
+    overflow: hidden;
+    margin-right: 15px;
+    margin-top: 45px;
+}
+
+.projects-gallery:hover .box {
+    transform: rotateY(25deg);
+}
+
+.projects-gallery .box:hover~.box {
+    transform: rotateY(-25deg);
+}
+
+.projects-gallery .box:hover {
+    transform: rotateY(0deg) scale(1.25);
+    z-index: 1;
+    box-shadow: 0 25px 40px rgba(0, 0, 0, 0.5);
+}
+
+.projects-gallery .box .box-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.projects-gallery .box .box-image:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(62deg, #FC5C7D, #6A82FB);
+    z-index: 1;
+    opacity: 0;
+    transition: 0.5s;
+    mix-blend-mode: multiply;
+}
+
+.projects-gallery .box:hover .box-image:before {
+    opacity: 1;
+}
+
+.projects-gallery .box .box-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.projects-gallery .box .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    padding: 20px;
+    align-items: flex-end;
+    box-sizing: border-box;
+}
+
+.projects-gallery .box .content h2 {
+    color: #fff;
+    transition: 0.5s;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    font-size: 20px;
+    transform: translateY(200px);
+    transition-delay: 0.3s;
+}
+
+.projects-gallery .box:hover .content h2 {
+    transform: translateY(0px);
+}
+
+.projects-gallery .box .content p {
+    color: #fff;
+    transition: 0.5s;
+    font-size: 14px;
+    transform: translateY(200px);
+    transition-delay: 0.4s;
+}
+
+.projects-gallery .box:hover .content p {
+    transform: translateY(0px);
+}
+
+/*--- CONTACT ---*/
+
+.contact-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 40vh;
+    padding: 0 2rem;
+    background: linear-gradient(62deg, #6A82FB, #FC5C7D);
+    color: #ecf1f5;
+}
+
+.contact-section h2 {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.contact-section .social-media * {
+    margin-right: 10px;
+    font-weight: 300;
+    font-size: 30px;
+    color: #ecf1f5;
+    margin: 6px 10px;
+}

@@ -1,0 +1,80 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #14271a;
+    font-family: "VT323", monospace;
+    background-size: contain;
+    background-image: url(https://media2.giphy.com/media/CdhxVrdRN4YFi/200w.webp?cid=ecf05e47c793ncoqsio2uor7g5jyg1bxrtf7qa5b0cxspmr9&ep=v1_gifs_search&rid=200w.webp&ct=g);
+}
+
+/*--- HEADER ---*/
+
+header {
+    color: #1dd767;
+    text-align: center;
+    margin-top: 3vw;
+    margin-bottom: -2vw;
+    font-size: 40px;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+/*--- FORM ---*/
+
+form {
+    display: flex;
+    flex-direction: column;
+    color: #1dd767;
+    margin: 4vw 35vw;
+    padding: 2vw;
+    flex: 1;
+    background-color: rgba(2, 23, 10, 0.8);
+    border-radius: 5px;
+}
+
+form .input-element {
+    margin: .5vw 0;
+    display: flex;
+    flex-direction: column;
+}
+
+form label, form p {
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-size: 25px;
+}
+
+form input[name="weapon-question"], form input[type="checkbox"] {
+    margin-right: 15px;
+}
+
+.written-input, select, textarea, option {
+    background-color: #87f1b4;
+    border-radius: 5px;
+    height: 30px;
+    padding: 6px;
+}
+
+button {
+    background-color: #0d7738;
+    color: #87f1b4;
+    border-radius: 6px;
+    height: 3.5em;
+    width: 10em;
+    align-self: center;
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 1vw;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #87f1b4;
+    color: #0d7738;
+}
+
+.dropdown-style, .radio-style, .checkbox-style, .textarea-style {
+    margin: .75vw 0;
+    display: flex;
+    flex-direction: column;
+}
