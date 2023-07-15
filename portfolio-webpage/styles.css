@@ -19,6 +19,11 @@ body {
 
 /*--- NAVBAR ---*/
 
+.navigation {
+    position: fixed;
+    width: 100%;
+}
+
 .navigation ul {
     display: flex;
     justify-content: flex-end;
@@ -55,7 +60,7 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 20vw;
+    height: 30vw;
     background-image: linear-gradient(62deg, #FC5C7D 0%, #6A82FB 100%);
     color: #ecf1f5;
 }
@@ -78,7 +83,7 @@ body {
     font-size: 20px;
 }
 
-.projects-section h2 {
+.projects-section .project-title {
     margin-bottom: 1rem;
     color: #bc6cbc;
 }
@@ -220,4 +225,9 @@ body {
     font-size: 30px;
     color: #ecf1f5;
     margin: 6px 10px;
+}
+
+/* tired of media queries */
+@media screen {
+    
 }
