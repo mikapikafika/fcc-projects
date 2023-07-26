@@ -9,6 +9,7 @@ All the projects there have descriptions at the top.
 ##
 ## Responsive Web Design Certification
 A course teaching HTML and CSS, including grid and flexbox.
+Preview the projects by copy-pasteing the url address of chosen index.html [here](https://htmlpreview.github.io/).
 
 ### survey-form
 A survey containing various input fields - checkboxes, radio buttons, text areas - as well as a dropdown menu. Inspired by the G.O.A.T. test from Fallout 3.
