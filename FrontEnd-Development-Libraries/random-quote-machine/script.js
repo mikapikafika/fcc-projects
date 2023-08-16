@@ -16,7 +16,24 @@ $(document).ready(function() {
         }
     }
 
-    button.click(newQuote);
+    const gradientBgs = [
+        "bg1", "bg2", "bg3"
+    ];
+    const body = $("body");
+    let bgIndex = 0;
+
+    function changeBackground() {
+        const nextBgIndex = (bgIndex + 1) % gradientBgs.length;
+        const nextBgClass = gradientBgs[nextBgIndex];
+        body.removeClass(gradientBgs.join(" "));
+        body.addClass(nextBgClass);
+        bgIndex = nextBgIndex;
+    }
+
+    button.click(function() {
+        newQuote();
+        changeBackground();
+    });
     // To initially show a quote when the page loads
     newQuote()
 });
