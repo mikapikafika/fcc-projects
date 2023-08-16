@@ -20,8 +20,15 @@ $(document).ready(function() {
                 author.text("~ " + data.author);
                 $("#quote-text-container").css("opacity", 1);
                 $("#quote-box").addClass("expanded");
+                updateTweetLink(data.content, data.author);
             }, 500);
         }
+    }
+
+    const tweetLink = $("#tweet-quote");
+    function updateTweetLink(quote, author) {
+        const link = `https://twitter.com/intent/tweet?text=${encodeURIComponent(`\"${quote}\" - ${author}`)}`;
+        tweetLink.attr("href", link);
     }
 
     const gradientBgs = [
@@ -30,7 +37,7 @@ $(document).ready(function() {
     const body = $("body");
     let bgIndex = 0;
 
-    function changeBackground() {
+    async function changeBackground() {
         const nextBgIndex = (bgIndex + 1) % gradientBgs.length;
         const nextBgClass = gradientBgs[nextBgIndex];
         body.removeClass(gradientBgs.join(" "));
