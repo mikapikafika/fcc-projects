@@ -8,7 +8,7 @@ Preview the projects by copy-pasteing the url address of chosen index.html [here
 Or by clicking the codepen link present in each description (there will be no assets or content - images - this way).
 
 ### random-quote-machine
-> A [website](https://codepen.io/mikapikafika/pen/XWorVzx) that renders a random quote from Quotable API each time the user clicks on a button. One can also tweet the chosen quote. Made using Bootstrap and jQuery.
+> A [website](https://codepen.io/mikapikafika/pen/XWorVzx) that renders a random quote from [Quotable API](https://github.com/lukePeavey/quotable) each time the user clicks on a button. One can also tweet the chosen quote. Made using Bootstrap and jQuery.
 
 ##
 ## JavaScript Algorithms And Data Structures Certification
