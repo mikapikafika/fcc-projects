@@ -11,14 +11,21 @@ $(document).ready(function() {
         if (!response.ok) {
             quote.textContent = "Oops... something went wrong.";
         } else {
+            // Fading out text and collapsing the quote container
             $("#quote-text-container").css("opacity", 0);
-            quote.text(data.content);
-            author.text("~ " + data.author);
+            $("#quote-box").removeClass("expanded");
+
+            setTimeout(function() {
+                quote.text(data.content);
+                author.text("~ " + data.author);
+                $("#quote-text-container").css("opacity", 1);
+                $("#quote-box").addClass("expanded");
+            }, 500);
         }
     }
 
     const gradientBgs = [
-        "bg1", "bg2", "bg3"
+        "bg1", "bg2", "bg3", "bg4", "bg5"
     ];
     const body = $("body");
     let bgIndex = 0;
