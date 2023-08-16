@@ -11,8 +11,9 @@ $(document).ready(function() {
         if (!response.ok) {
             quote.textContent = "Oops... something went wrong.";
         } else {
+            $("#quote-text-container").css("opacity", 0);
             quote.text(data.content);
-            author.text(data.author);
+            author.text("~ " + data.author);
         }
     }
 
