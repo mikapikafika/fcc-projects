@@ -24,14 +24,14 @@ function example() {
 `;
 
 function Preview({markdownText}) {
-    useEffect(() => {
-        const preview = document.getElementById("preview");
-        preview.innerHTML = marked(markdownText || initialMarkdown);
-    }, [markdownText]);
+    const convertedText = marked(markdownText || initialMarkdown);
 
     return (
         <div className="Preview">
-            <div id="preview" />
+            <div
+                id="preview"
+                dangerouslySetInnerHTML={{ __html: convertedText }}
+            />
         </div>
     );
 }

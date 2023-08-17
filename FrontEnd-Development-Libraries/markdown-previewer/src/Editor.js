@@ -1,7 +1,6 @@
 import {useState} from "react";
 
-function Editor() {
-    const [markdownText, setMarkdownText] = useState("");
+function Editor({markdownText, setMarkdownText}) {
     const handleInput = (event) => {
         const text = event.target.value;
         setMarkdownText(text);
