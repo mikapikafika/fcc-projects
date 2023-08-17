@@ -1,4 +1,7 @@
 $main-font: "Bebas Neue", sans-serif;
+$color-pool: (
+        #ff3c3c, #f5a041, #f3f84d, #75fc57, #4fefff, #5795fa, #8b78ff, #fc7efc, #fc7ebb
+);
 
 * {
   margin: 0;
@@ -14,12 +17,19 @@ body {
 .drum-pad {
   color: white;
   font-size: 5rem;
-  border: 2px solid red;
   background: #1d1a41;
   border-radius: 1rem;
+  transition: background 0.3s, box-shadow 0.3s;
 
-  &:hover {
+  &:hover, &:active {
     cursor: pointer;
+    box-shadow: 0px 0px 13px 0px rgba(206,191,255,0.8);
+    $num-colors: 100;
+    @for $i from 1 through length($color-pool) {
+      &:nth-child(#{$i}) {
+        background: nth($color-pool, $i);
+      }
+    }
   }
 }
 

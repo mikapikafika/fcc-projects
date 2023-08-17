@@ -60,7 +60,7 @@ function DrumMachine() {
             id="drum-machine"
             className="DrumMachine d-flex align-items-center justify-content-center min-vh-100"
         >
-            <div class="row">
+            <div class="row justify-content-between">
                 {drumPads.map((pad) => (
                         <div
                             key={pad.id}
