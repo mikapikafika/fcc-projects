@@ -1,3 +1,5 @@
+import './EditorPreview.scss';
+
 function Editor({markdownText, setMarkdownText}) {
     const handleInput = (event) => {
         setMarkdownText(event.target.value);
@@ -5,6 +7,7 @@ function Editor({markdownText, setMarkdownText}) {
 
     return (
         <div className="Editor">
+            <div class="toolbar"><i className="fa fa-file-text" aria-hidden="true"></i> Editor</div>
             <textarea
                 id="editor"
                 value={markdownText}

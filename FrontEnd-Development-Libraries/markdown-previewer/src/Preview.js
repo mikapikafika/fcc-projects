@@ -1,4 +1,5 @@
 import {marked} from "marked";
+import './EditorPreview.scss';
 
 const initialMarkdown = `
 # Title Header (H1 Header)
@@ -30,6 +31,7 @@ function Preview({markdownText}) {
 
     return (
         <div className="Preview">
+            <div className="toolbar"><i className="fa fa-file-text" aria-hidden="true"></i> Preview</div>
             <div
                 id="preview"
                 dangerouslySetInnerHTML={{ __html: convertedText }}

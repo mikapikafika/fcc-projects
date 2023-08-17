@@ -1,0 +1,18 @@
+$main-font: "Ubuntu", sans-serif;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $main-font;
+}
+
+body {
+  background: linear-gradient(to right, #a8c0ff, #3f2b96);
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-content: space-around;
+}

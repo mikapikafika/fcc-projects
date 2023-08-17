@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import Editor from "./Editor";
 import Preview from "./Preview";
 import {useState} from "react";
