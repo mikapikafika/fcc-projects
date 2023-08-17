@@ -1,26 +1,28 @@
-import {useEffect} from "react";
 import {marked} from "marked";
 
 const initialMarkdown = `
-# Heading 1
-## Sub Heading
-[Link](https://www.example.com)
-Inline \`code\`
+# Title Header (H1 Header)
+## Sub Header (H2 header)
+
+[Link to a hacker typer website to feel like a hacker](https://hackertyper.com)
+
+Here's some \`inline code\`
 
 \`\`\`
-// Code Block
+// And here's a block of code:
 function example() {
-  return 'Hello, World!';
+  return "Hello, World!";
 }
 \`\`\`
 
-- List Item 1
-- List Item 2
+- This is a list item
+- This list is unordered
 
-> Blockquote
+> Imagine a profound quote here
 
-![Image](https://via.placeholder.com/150)
-**Bolded Text**
+![Image](https://64.media.tumblr.com/25ec1da1ceb3d8c59ff61abda466e66d/tumblr_mq5iy5uA1K1s5jjtzo1_500.gif)
+
+**This text is bold**
 `;
 
 function Preview({markdownText}) {
