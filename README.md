@@ -4,8 +4,6 @@ A repository for all the mini-projects that are a part of freeCodeCamp certifica
 ##
 ## FrontEnd Development Libraries
 A course teaching some of the more popular frontend libraries, such as Bootstrap, jQuery, SASS, React and Redux.<br>
-Preview the projects by copy-pasteing the url address of chosen index.html [here](https://htmlpreview.github.io/).<br>
-Or by clicking the codepen/replit link present in each description (there may be no assets or content - images - this way).
 
 ##
 ## JavaScript Algorithms And Data Structures Certification
@@ -14,6 +12,7 @@ All the projects there have descriptions at the top.
 
 ##
 ## Responsive Web Design Certification
-A course teaching HTML and CSS, including grid and flexbox.<br>
-Preview the projects by copy-pasteing the url address of chosen index.html [here](https://htmlpreview.github.io/).<br>
-Or by clicking the codepen/replit link present in each description (there may be no assets or content - images - this way).
+A course teaching HTML and CSS, including grid and flexbox.
+
+##
+### Choose a directory to see the actual projects and their descriptions.
