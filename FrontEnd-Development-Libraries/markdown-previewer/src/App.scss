@@ -14,5 +14,9 @@ body {
 .App {
   display: flex;
   justify-content: center;
-  align-content: space-around;
+  align-items: center;
+
+  > :not(:last-child) {
+    margin-right: 20px;
+  }
 }
