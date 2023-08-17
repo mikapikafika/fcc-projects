@@ -1,0 +1,29 @@
+$main-font: "Bebas Neue", sans-serif;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $main-font;
+}
+
+body {
+  background: linear-gradient(to right, #5C258D, #4389A2);
+}
+
+.drum-pad {
+  color: white;
+  font-size: 5rem;
+  border: 2px solid red;
+  background: #1d1a41;
+  border-radius: 1rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+#display {
+  color: white;
+  font-size: 5rem;
+}
