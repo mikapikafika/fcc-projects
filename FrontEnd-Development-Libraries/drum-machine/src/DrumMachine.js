@@ -58,13 +58,13 @@ function DrumMachine() {
     return (
         <div
             id="drum-machine"
-            className="DrumMachine"
+            className="DrumMachine d-flex align-items-center justify-content-center min-vh-100"
         >
             <div class="row">
                 {drumPads.map((pad) => (
                         <div
                             key={pad.id}
-                            className="drum-pad col text-center"
+                            className="drum-pad col-4 text-center mb-3"
                             id={pad.id}
                             onClick={() => handlePadClick(pad.audioClip, pad.description)}
                         >
@@ -77,7 +77,7 @@ function DrumMachine() {
                         </div>
                     )
                 )}
-                <div id="display" className="Display">
+                <div id="display" className="Display text-center mt-4">
                     {displayedText}
                 </div>
             </div>
