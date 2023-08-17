@@ -1,15 +1,24 @@
 import {useEffect, useState} from "react";
+import audio1 from "./audio/Cev_H2.mp3";
+import audio2 from "./audio/Dsc_Oh.mp3";
+import audio3 from "./audio/Heater-1.mp3";
+import audio4 from "./audio/Heater-2.mp3";
+import audio5 from "./audio/Heater-3.mp3";
+import audio6 from "./audio/Heater-4_1.mp3";
+import audio7 from "./audio/Heater-6.mp3";
+import audio8 from "./audio/Kick_n_Hat.mp3";
+import audio9 from "./audio/RP4_KICK_1.mp3";
 
 const drumPads = [
-    {id: "Q", keyCode: 81, audioClip: "audio1.mp3", description: "Audio 1 Description" },
-    {id: "W", keyCode: 87, audioClip: "audio2.mp3", description: "Audio 1 Description" },
-    {id: "E", keyCode: 69, audioClip: "audio3.mp3", description: "Audio 1 Description" },
-    {id: "A", keyCode: 65, audioClip: "audio4.mp3", description: "Audio 1 Description" },
-    {id: "S", keyCode: 83, audioClip: "audio5.mp3", description: "Audio 1 Description" },
-    {id: "D", keyCode: 68, audioClip: "audio6.mp3", description: "Audio 1 Description" },
-    {id: "Z", keyCode: 90, audioClip: "audio7.mp3", description: "Audio 1 Description" },
-    {id: "X", keyCode: 88, audioClip: "audio8.mp3", description: "Audio 1 Description" },
-    {id: "C", keyCode: 67, audioClip: "audio9.mp3", description: "Audio 1 Description" },
+    {id: "Q", keyCode: 81, audioClip: audio1, description: "Closed HH" },
+    {id: "W", keyCode: 87, audioClip: audio2, description: "Open HH" },
+    {id: "E", keyCode: 69, audioClip: audio3, description: "Heater 1" },
+    {id: "A", keyCode: 65, audioClip: audio4, description: "Heater 2" },
+    {id: "S", keyCode: 83, audioClip: audio5, description: "Heater 3" },
+    {id: "D", keyCode: 68, audioClip: audio6, description: "Heater 4" },
+    {id: "Z", keyCode: 90, audioClip: audio7, description: "Clap" },
+    {id: "X", keyCode: 88, audioClip: audio8, description: "Kick n' Hat" },
+    {id: "C", keyCode: 67, audioClip: audio9, description: "Kick" },
 ];
 
 function DrumMachine() {
