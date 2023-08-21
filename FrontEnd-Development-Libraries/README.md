@@ -7,3 +7,6 @@ Preview the projects by clicking the replit link present in each description (th
 
 ### markdown-previewer
 > A [live markdown previewer](https://markdown-previewer.mikapikafika.repl.co) where one can write their own markdown text and see how it will look live. Made using the Marked library, SASS and React.
+
+### drum-machine
+> A [drum machine website](https://drum-machine-website.mikapikafika.repl.co) that's basically a simple but beautiful soundboard with goofy ahh sounds.
