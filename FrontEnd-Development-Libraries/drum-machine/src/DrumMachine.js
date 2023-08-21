@@ -25,6 +25,7 @@ const drumPads = [
 function DrumMachine() {
     const [displayedText, setDisplayedText] = useState("");
     const [activePad, setActivePad] = useState(null);
+    const [volume, setVolume] = useState(0.5);
 
     // Key pressing and clicking
 
@@ -32,21 +33,23 @@ function DrumMachine() {
         event.preventDefault();
         const keyPressed = event.key.toUpperCase();
         const drumPad = drumPads.find((pad) => pad.id === keyPressed);
+
         if (drumPad) {
             const audio = new Audio(drumPad.audioClip);
             audio.play();
             setDisplayedText(drumPad.description);
             setActivePad(keyPressed);
+            console.log(drumPad.id);
         }
-    };
-
-    const handleKeyUp = () => {
-        setActivePad(null);
     };
 
     useEffect(() => {
         const handleKeyDown = (event) => {
             handleKeyPress(event);
+        };
+
+        const handleKeyUp = () => {
+            setActivePad(null);
         };
 
         window.addEventListener("keydown", handleKeyDown);
@@ -69,11 +72,11 @@ function DrumMachine() {
             id="drum-machine"
             className="DrumMachine d-flex align-items-center justify-content-center min-vh-100"
         >
-            <div class="row justify-content-between">
+            <div className="row justify-content-between">
                 {drumPads.map((pad) => (
                         <div
                             key={pad.id}
-                            className="drum-pad col-4 text-center mb-3"
+                            className={`drum-pad col-4 text-center mb-3 ${activePad === pad.id ? "active" : ""}`}
                             id={pad.id}
                             onClick={() => handlePadClick(pad.audioClip, pad.description)}
                         >
@@ -87,7 +90,7 @@ function DrumMachine() {
                     )
                 )}
                 <div id="display" className="Display text-center mt-4">
-                    {displayedText}
+                    {displayedText || "Click/press me"}
                 </div>
             </div>
         </div>
