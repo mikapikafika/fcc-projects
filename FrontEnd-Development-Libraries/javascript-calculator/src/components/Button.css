@@ -1,23 +1,26 @@
 button {
-    border: none;
-    background-color: rgb(80, 60, 209);
-    font-size: 24px;
-    color: rgb(255, 255, 255);
+    background-color: #6099be;
+    font-size: 2rem;
+    color: #e3e3e3;
     font-weight: bold;
-    cursor: pointer;
     border-radius: 10px;
-    outline: none;
 }
 
 button:hover {
-    background-color: rgb(61, 43, 184);
+    background-color: #37739b;
+    cursor: pointer;
 }
 
 .equals {
     grid-column: 3 / 5;
-    background-color: rgb(243, 61, 29);
+    background-color: #f36364;
 }
 
-.equals:hover {
-    background-color: rgb(228, 39, 15);
+.equals:hover, .clear:hover {
+    background-color: #bd3a3a;
+}
+
+.clear {
+    grid-column: 1 / 3;
+    background-color: #f36364;
 }

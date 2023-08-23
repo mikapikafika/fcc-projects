@@ -7,8 +7,8 @@ import {useSelector, useDispatch} from "react-redux";
 import {updateEquation} from "./redux/actions";
 
 const buttons = [
-    ["C", "+-", "%", "/"],
-    [7, 8, 9, "X"],
+    ["C", "+-", "/"],
+    [7, 8, 9, "*"],
     [4, 5, 6, "-"],
     [1, 2, 3, "+"],
     [0, ".", "="],
@@ -20,11 +20,8 @@ const toLocaleString = (number) =>
 const removeSpaces = (number) => number.toString().replace(/\s/g, "");
 
 function App() {
-    const [equation, setEquation] = useState({
-        sign: "",
-        number: 0,
-        result: 0,
-    });
+    const equation = useSelector((state) => state);
+    const dispatch = useDispatch();
 
     // What happens when you click numbers
     const handleNumberClicking = (event) => {
@@ -32,15 +29,18 @@ function App() {
         const value = event.target.innerHTML;
 
         if (removeSpaces(equation.number).length < 16) {
-            setEquation({
-                ...equation,
-                number: equation.number === 0 && value === "0"
-                    ? "0"
-                    : removeSpaces(equation.number) % 1 === 0
-                        ? toLocaleString(Number(removeSpaces(equation.number + value)))
-                        : toLocaleString(equation.number + value),
-                result: !equation.sign ? 0 : equation.result,
-            });
+            const newNumber = equation.number === 0 && value === "0"
+                ? "0"
+                : removeSpaces(equation.number) % 1 === 0
+                    ? toLocaleString(Number(removeSpaces(equation.number + value)))
+                    : toLocaleString(equation.number + value);
+
+            const newResult = !equation.sign ? 0 : equation.result;
+
+            dispatch(updateEquation({
+                number: newNumber,
+                result: newResult,
+            }));
         }
     };
 
@@ -49,14 +49,16 @@ function App() {
         event.preventDefault();
         const value = event.target.innerHTML;
 
-        setEquation({
-            ...equation,
+        const newResult = !equation.result && equation.number ? equation.number : equation.result;
+
+        dispatch(updateEquation({
             sign: value,
-            result: !equation.result && equation.number ? equation.number : equation.result,
+            result: newResult,
             number: 0,
-        });
+        }));
     };
 
+    // What happens when you click =
     const handleEqualsBtn = () => {
         if (equation.sign && equation.number) {
             const calculations = (a, b, sign) =>
@@ -68,67 +70,69 @@ function App() {
                             ? a * b
                             : a / b;
 
-            setEquation({
-                ...equation,
-                result: equation.number === "0" && equation.sign === "/"
-                    ? "Err"
-                    : calculations(Number(equation.result), Number(equation.number), equation.sign),
+            const newResult = equation.number === "0" && equation.sign === "/"
+                ? "Err"
+                : calculations(Number(equation.result), Number(equation.number), equation.sign);
+
+            dispatch(updateEquation({
+                result: newResult,
                 sign: "",
                 number: 0,
-            })
+            }));
         }
     }
 
+    // What happens when you click C
     const handleClearBtn = () => {
-        setEquation({
-            ...equation,
+        dispatch(updateEquation({
             sign: "",
             number: 0,
             result: 0,
-        });
+        }))
     };
 
     const handleDecimalBtn = (event) => {
         event.preventDefault();
         const value = event.target.innerHTML;
 
-        setEquation({
+        const newNumber = !equation.number.toString().includes(".") ? equation.number + value : equation.number;
+
+        dispatch(updateEquation({
             ...equation,
-            number: !equation.number.toString().includes(".") ? equation.number + value : equation.number,
-        });
+            number: newNumber,
+        }))
     };
 
     const handleInvertBtn = () => {
-        setEquation({
-            ...equation,
+        dispatch(updateEquation({
             number: equation.number ? equation.number * -1 : 0,
             result: equation.result ? equation.result * -1 : 0,
             sign: "",
-        })
+        }))
     }
 
     const handlePercentBtn = () => {
-        let number = equation.number ? parseFloat(equation.number) : 0;
-        let result = equation.result ? parseFloat(equation.result) : 0;
+        let newNumber = equation.number ? parseFloat(equation.number) : 0;
+        let newResult = equation.result ? parseFloat(equation.result) : 0;
 
-        setEquation({
-            ...equation,
-            number: (number /= Math.pow(100, 1)),
-            result: (result /= Math.pow(100, 1)),
+        dispatch(updateEquation({
+            number: (newNumber /= Math.pow(100, 1)),
+            result: (newResult /= Math.pow(100, 1)),
             sign: "",
-        });
+        }))
     };
 
     return (
         <Calculator>
-            <Display value={equation.number ? equation.number : equation.result}/>
+            <Display id="display" value={equation.number ? equation.number : equation.result}/>
             <ButtonWrapper>
                 {buttons.flat().map((btn, i) => {
                     return (
                         <Button
                             key={i}
-                            className={btn === "=" ? "equals" : ""}
+                            className={btn === "=" ? "equals" : btn ==="C" ? "clear" : ""}
                             value={btn}
+                            id={btn === "=" ? "equals" : btn}
                             onClick={
                                 btn === "C"
                                     ? handleClearBtn
