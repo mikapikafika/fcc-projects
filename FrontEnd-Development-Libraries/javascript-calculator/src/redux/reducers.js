@@ -1,6 +1,7 @@
 const initialState = {
     displayedValue: "0",
-    equation: ""
+    equation: "",
+    result: false
 };
 
 const calculatorReducer = (state = initialState, action) => {
@@ -9,6 +10,8 @@ const calculatorReducer = (state = initialState, action) => {
           return {...state, displayedValue: action.payload};
       case "SET_EQUATION":
           return {...state, equation: action.payload};
+      case "SET_RESULT":
+          return {...state, result: action.payload};
       default:
           return state;
   }

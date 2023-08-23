@@ -9,24 +9,49 @@ function Calculator() {
     const dispatch = useDispatch();
 
     const handleButtonClick = (buttonId) => {
-        if (buttonId === "clear") {
+        // Clearing everything
+        if (buttonId === "C") {
             dispatch(setDisplayedValue("0"));
             dispatch(setEquation(""));
-        } else if (buttonId === "equals") {
+        }
+
+
+        else if (buttonId === "=") {
             try {
                 const result = evaluate(equation);
                 dispatch(setDisplayedValue(result.toString()));
                 dispatch(setEquation(result.toString()));
             } catch (error) {
-                setDisplayedValue("Error");
+                dispatch(setDisplayedValue("Error"));
             }
-        } else {
+        }
+
+        else if (buttonId === ".") {
+            // Preventing multiple .s
+            if (!displayedValue.includes(".")) {
+                dispatch(setDisplayedValue(displayedValue + "."));
+                dispatch(setEquation(equation + "."));
+            }
+        }
+
+
+        else {
             if (displayedValue === '0' || displayedValue === 'Error') {
-                dispatch(setDisplayedValue(buttonId));
-                dispatch(setEquation(buttonId));
-            } else {
+                // Preventing multiple 0s
+                if (buttonId !== "0") {
+                    dispatch(setDisplayedValue(buttonId));
+                    dispatch(setEquation(buttonId));
+                }
+            }
+
+
+            else {
+                if (equation && !equation.includes("=")) {
+                    dispatch(setEquation(equation + buttonId));
+                } else {
+                    dispatch(setEquation(displayedValue + buttonId));
+                }
                 dispatch(setDisplayedValue(displayedValue + buttonId));
-                dispatch(setEquation(equation + buttonId));
             }
         }
     }
