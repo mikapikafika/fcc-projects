@@ -2,6 +2,8 @@ import Calculator from "./components/Calculator";
 import Display from "./components/Display";
 import ButtonWrapper from "./components/ButtonWrapper";
 import Button from "./components/Button";
+import {useState} from "react";
+import calculator from "./components/Calculator";
 
 const buttons = [
     ["C", "+-", "%", "/"],
@@ -12,18 +14,129 @@ const buttons = [
 ];
 
 function App() {
+    const [equation, setEquation] = useState({
+        sign: "",
+        number: 0,
+        result: 0,
+    });
+
+    const handleNumberClicking = (event) => {
+        event.preventDefault();
+        const value = event.target.innerHTML;
+
+        if (equation.number.length < 16) {
+            setEquation({
+                ...equation,
+                number: equation.number === 0 && value === "0"
+                    ? "0"
+                    : equation.number % 1 === 0
+                        ? Number(equation.number + value)
+                        : equation.number + value,
+                result: !equation.sign ? 0 : equation.result,
+            });
+        }
+    };
+
+    const handleCalculationsBtn = (event) => {
+        event.preventDefault();
+        const value = event.target.innerHTML;
+
+        setEquation({
+            ...equation,
+            sign: value,
+            result: !equation.result && equation.number ? equation.number : equation.result,
+            number: 0,
+        });
+    };
+
+    const handleEqualsBtn = () => {
+        if (equation.sign && equation.number) {
+            const calculations = (a, b, sign) =>
+                sign === "+"
+                    ? a + b
+                    : sign === "-"
+                        ? a - b
+                        : sign === "*"
+                            ? a * b
+                            : a / b;
+
+            setEquation({
+                ...equation,
+                result: equation.number === "0" && equation.sign === "/"
+                    ? "Err"
+                    : calculations(Number(equation.result), Number(equation.number), equation.sign),
+                sign: "",
+                number: 0,
+            })
+        }
+    }
+
+    const handleClearBtn = () => {
+        setEquation({
+            ...equation,
+            sign: "",
+            number: 0,
+            result: 0,
+        });
+    };
+
+    const handleDecimalBtn = (event) => {
+        event.preventDefault();
+        const value = event.target.innerHTML;
+
+        setEquation({
+            ...equation,
+            number: !equation.number.toString().includes(".") ? equation.number + value : equation.number,
+        });
+    };
+
+    const handleInvertBtn = () => {
+        setEquation({
+            ...equation,
+            number: equation.number ? equation.number * -1 : 0,
+            result: equation.result ? equation.result * -1 : 0,
+            sign: "",
+        })
+    }
+
+    const handlePercentBtn = () => {
+        let number = equation.number ? parseFloat(equation.number) : 0;
+        let result = equation.result ? parseFloat(equation.result) : 0;
+
+        setEquation({
+            ...equation,
+            number: (number /= Math.pow(100, 1)),
+            result: (result /= Math.pow(100, 1)),
+            sign: "",
+        });
+    };
+
     return (
         <Calculator>
-            <Display value="0" />
+            <Display value={equation.number ? equation.number : equation.result}/>
             <ButtonWrapper>
-                {buttons.flat().map( (btn, i) => {
+                {buttons.flat().map((btn, i) => {
                     return (
-                      <Button
-                          key={i}
-                          className={btn === "=" ? "equals" : ""}
-                          value={btn}
-                          onClick={() => {console.log(`${btn} clicked!`);}}
-                      />    
+                        <Button
+                            key={i}
+                            className={btn === "=" ? "equals" : ""}
+                            value={btn}
+                            onClick={
+                                btn === "C"
+                                    ? handleClearBtn
+                                    : btn === "+-"
+                                        ? handleInvertBtn
+                                        : btn === "%"
+                                            ? handlePercentBtn
+                                            : btn === "="
+                                                ? handleEqualsBtn
+                                                : btn === "/" || btn === "*" || btn === "-" || btn === "+"
+                                                    ? handleCalculationsBtn
+                                                    : btn === "."
+                                                        ? handleDecimalBtn
+                                                        : handleNumberClicking
+                            }
+                        />
                     );
                 })}
             </ButtonWrapper>
