@@ -1,25 +1,33 @@
 import './App.css';
-import {useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {setDisplayedValue, setEquation} from "./redux/actions";
 import {evaluate} from "mathjs";
 
 function Calculator() {
-    const [displayedValue, setDisplayedValue] = useState("0");
-    const [equation, setEquation] = useState("");
+    const displayedValue = useSelector((state) => state.displayedValue);
+    const equation = useSelector((state) => state.equation);
+    const dispatch = useDispatch();
 
     const handleButtonClick = (buttonId) => {
         if (buttonId === "clear") {
-            setDisplayedValue("0");
-            setEquation("");
+            dispatch(setDisplayedValue("0"));
+            dispatch(setEquation(""));
         } else if (buttonId === "equals") {
             try {
                 const result = evaluate(equation);
-                setDisplayedValue(result.toString());
-                setEquation(result.toString());
+                dispatch(setDisplayedValue(result.toString()));
+                dispatch(setEquation(result.toString()));
             } catch (error) {
                 setDisplayedValue("Error");
             }
         } else {
-            displayedValue === "0" ? setDisplayedValue(buttonId) : setDisplayedValue(displayedValue + buttonId);
+            if (displayedValue === '0' || displayedValue === 'Error') {
+                dispatch(setDisplayedValue(buttonId));
+                dispatch(setEquation(buttonId));
+            } else {
+                dispatch(setDisplayedValue(displayedValue + buttonId));
+                dispatch(setEquation(equation + buttonId));
+            }
         }
     }
 
