@@ -2,7 +2,6 @@ import Calculator from "./components/Calculator";
 import Display from "./components/Display";
 import ButtonWrapper from "./components/ButtonWrapper";
 import Button from "./components/Button";
-import {useState} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {updateEquation} from "./redux/actions";
 
@@ -13,9 +12,6 @@ const buttons = [
     [1, 2, 3, "+"],
     [0, ".", "="],
 ];
-
-const toLocaleString = (number) =>
-    String(number).replace(/(?<!\..*)(\d)(?=(?:\d{3})+(?:\.|$))/g, "$1 ");
 
 const removeSpaces = (number) => number.toString().replace(/\s/g, "");
 
@@ -28,16 +24,18 @@ function App() {
         event.preventDefault();
         const value = event.target.innerHTML;
 
+        // 16 is the max number of digits displayed
         if (removeSpaces(equation.number).length < 16) {
             const newNumber = equation.number === 0 && value === "0"
                 ? "0"
-                : removeSpaces(equation.number) % 1 === 0
-                    ? toLocaleString(Number(removeSpaces(equation.number + value)))
-                    : toLocaleString(equation.number + value);
+                : removeSpaces(equation.number) % 1 === 0    // is it an integer
+                    ? Number(removeSpaces(equation.number + value))
+                    : equation.number + value;
 
             const newResult = !equation.sign ? 0 : equation.result;
 
             dispatch(updateEquation({
+                ...equation,
                 number: newNumber,
                 result: newResult,
             }));
@@ -49,9 +47,11 @@ function App() {
         event.preventDefault();
         const value = event.target.innerHTML;
 
+        // Checking whether to a previous result is available or not
         const newResult = !equation.result && equation.number ? equation.number : equation.result;
 
         dispatch(updateEquation({
+            ...equation,
             sign: value,
             result: newResult,
             number: 0,
@@ -60,6 +60,7 @@ function App() {
 
     // What happens when you click =
     const handleEqualsBtn = () => {
+        // Checking whether there's an operator and a number and not just one number
         if (equation.sign && equation.number) {
             const calculations = (a, b, sign) =>
                 sign === "+"
@@ -70,11 +71,12 @@ function App() {
                             ? a * b
                             : a / b;
 
-            const newResult = equation.number === "0" && equation.sign === "/"
+            const newResult = equation.number === "0" && equation.sign === "/"  // preventing dividing by 0
                 ? "Err"
                 : calculations(Number(equation.result), Number(equation.number), equation.sign);
 
             dispatch(updateEquation({
+                ...equation,
                 result: newResult,
                 sign: "",
                 number: 0,
@@ -85,16 +87,19 @@ function App() {
     // What happens when you click C
     const handleClearBtn = () => {
         dispatch(updateEquation({
+            ...equation,
             sign: "",
             number: 0,
             result: 0,
         }))
     };
 
+    // What happens when you click .
     const handleDecimalBtn = (event) => {
         event.preventDefault();
         const value = event.target.innerHTML;
 
+        // Checking whether number already has a "."
         const newNumber = !equation.number.toString().includes(".") ? equation.number + value : equation.number;
 
         dispatch(updateEquation({
@@ -103,24 +108,15 @@ function App() {
         }))
     };
 
+    // What happens when you click +-
     const handleInvertBtn = () => {
         dispatch(updateEquation({
+            ...equation,
             number: equation.number ? equation.number * -1 : 0,
             result: equation.result ? equation.result * -1 : 0,
             sign: "",
         }))
     }
-
-    const handlePercentBtn = () => {
-        let newNumber = equation.number ? parseFloat(equation.number) : 0;
-        let newResult = equation.result ? parseFloat(equation.result) : 0;
-
-        dispatch(updateEquation({
-            number: (newNumber /= Math.pow(100, 1)),
-            result: (newResult /= Math.pow(100, 1)),
-            sign: "",
-        }))
-    };
 
     return (
         <Calculator>
@@ -130,23 +126,21 @@ function App() {
                     return (
                         <Button
                             key={i}
-                            className={btn === "=" ? "equals" : btn ==="C" ? "clear" : ""}
+                            className={btn === "=" ? "equals" : btn === "C" ? "clear" : ""}
                             value={btn}
-                            id={btn === "=" ? "equals" : btn}
+                            id={btn}
                             onClick={
                                 btn === "C"
                                     ? handleClearBtn
                                     : btn === "+-"
                                         ? handleInvertBtn
-                                        : btn === "%"
-                                            ? handlePercentBtn
-                                            : btn === "="
-                                                ? handleEqualsBtn
-                                                : btn === "/" || btn === "*" || btn === "-" || btn === "+"
-                                                    ? handleCalculationsBtn
-                                                    : btn === "."
-                                                        ? handleDecimalBtn
-                                                        : handleNumberClicking
+                                        : btn === "="
+                                            ? handleEqualsBtn
+                                            : btn === "/" || btn === "*" || btn === "-" || btn === "+"
+                                                ? handleCalculationsBtn
+                                                : btn === "."
+                                                    ? handleDecimalBtn
+                                                    : handleNumberClicking
                             }
                         />
                     );

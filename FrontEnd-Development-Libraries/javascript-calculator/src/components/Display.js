@@ -4,7 +4,7 @@ import "./Display.css";
 function Display({value}) {
     return (
       <Textfit className="Display" mode="single" max={70}>
-          {value}
+          {typeof value === "number" ? value.toLocaleString() : value}
       </Textfit>
     );
 }
