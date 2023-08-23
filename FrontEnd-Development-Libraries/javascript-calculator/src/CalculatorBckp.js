@@ -11,7 +11,7 @@ const buttons = [
   ["0", ".", "←"]
 ];
 
-function Calculator() {
+function CalculatorBckp() {
     const displayedValue = useSelector((state) => state.displayedValue);
     const equation = useSelector((state) => state.equation);
     const dispatch = useDispatch();
@@ -69,12 +69,32 @@ function Calculator() {
 
 
             else {
-                if (equation && !equation.includes("=")) {
+                if (buttonId === "-" && equation.endsWith("-")) {
+                    // Negative sign
+                    dispatch(setDisplayedValue(displayedValue + buttonId));
                     dispatch(setEquation(equation + buttonId));
-                } else {
-                    dispatch(setEquation(displayedValue + buttonId));
                 }
-                dispatch(setDisplayedValue(displayedValue + buttonId));
+
+                else if ("+-*/".includes(buttonId)) {
+                    // Remove previous operators & add the current one
+                    const operatorIndex = equation.search(/[-+*/]$/);
+                    if (operatorIndex >= 0) {
+                        const newEquation = equation.slice(0, operatorIndex);
+                        dispatch(setEquation(newEquation));
+                    }
+
+                    else {
+                        dispatch(setEquation(equation + buttonId));
+                    }
+
+                    dispatch(setDisplayedValue(displayedValue + buttonId));
+                }
+
+                else {
+                    dispatch(setEquation(equation + buttonId));
+                    dispatch(setDisplayedValue(displayedValue + buttonId));
+
+                }
             }
         }
     }
@@ -95,4 +115,4 @@ function Calculator() {
     );
 }
 
-export default Calculator;
+export default CalculatorBckp;
