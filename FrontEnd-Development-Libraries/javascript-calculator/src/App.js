@@ -3,7 +3,8 @@ import Display from "./components/Display";
 import ButtonWrapper from "./components/ButtonWrapper";
 import Button from "./components/Button";
 import {useState} from "react";
-import calculator from "./components/Calculator";
+import {useSelector, useDispatch} from "react-redux";
+import {updateEquation} from "./redux/actions";
 
 const buttons = [
     ["C", "+-", "%", "/"],
@@ -13,6 +14,11 @@ const buttons = [
     [0, ".", "="],
 ];
 
+const toLocaleString = (number) =>
+    String(number).replace(/(?<!\..*)(\d)(?=(?:\d{3})+(?:\.|$))/g, "$1 ");
+
+const removeSpaces = (number) => number.toString().replace(/\s/g, "");
+
 function App() {
     const [equation, setEquation] = useState({
         sign: "",
@@ -20,23 +26,25 @@ function App() {
         result: 0,
     });
 
+    // What happens when you click numbers
     const handleNumberClicking = (event) => {
         event.preventDefault();
         const value = event.target.innerHTML;
 
-        if (equation.number.length < 16) {
+        if (removeSpaces(equation.number).length < 16) {
             setEquation({
                 ...equation,
                 number: equation.number === 0 && value === "0"
                     ? "0"
-                    : equation.number % 1 === 0
-                        ? Number(equation.number + value)
-                        : equation.number + value,
+                    : removeSpaces(equation.number) % 1 === 0
+                        ? toLocaleString(Number(removeSpaces(equation.number + value)))
+                        : toLocaleString(equation.number + value),
                 result: !equation.sign ? 0 : equation.result,
             });
         }
     };
 
+    // What happens when you click - + * /
     const handleCalculationsBtn = (event) => {
         event.preventDefault();
         const value = event.target.innerHTML;
