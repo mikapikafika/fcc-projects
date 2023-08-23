@@ -9,4 +9,7 @@ Preview the projects by clicking the replit link present in each description (th
 > A [live markdown previewer](https://markdown-previewer.mikapikafika.repl.co) where one can write their own markdown text and see how it will look live. Made using the Marked library, SASS and React.
 
 ### drum-machine
-> A [drum machine website](https://drum-machine-website.mikapikafika.repl.co) that's basically a simple but beautiful soundboard with goofy ahh sounds.
+> A [drum machine website](https://drum-machine-website.mikapikafika.repl.co) that's basically a simple but beautiful soundboard with goofy ahh sounds. Made using SASS, Bootstrap and React.
+ 
+### javascript-calculator
+> An [online calculator](https://javascript-calculator.mikapikafika.repl.co), not that anyone would ever need that. Was more difficult than the previous projects to implement though. Made using React and Redux.
