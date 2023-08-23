@@ -46,7 +46,6 @@ function Timer() {
 
     return (
       <div className="Timer">
-          <div id="time-left">{formattedTime}</div>
           <button id="start_stop" onClick={handleStartStop}>
               {isRunning ? "Pause" : "Start"}
           </button>
