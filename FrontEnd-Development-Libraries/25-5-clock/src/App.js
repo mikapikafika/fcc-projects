@@ -3,16 +3,17 @@ import Settings from "./components/Settings";
 import Timer from "./components/Timer";
 import Display from "./components/Display";
 import store from "./redux/store";
+import TimerWrapper from "./components/TimerWrapper";
 
 
 function App() {
     return (
         <Provider store={store}>
-            <div className="container">
+            <TimerWrapper>
                 <Settings />
                 <Timer />
                 <Display />
-            </div>
+            </TimerWrapper>
         </Provider>
     );
 }

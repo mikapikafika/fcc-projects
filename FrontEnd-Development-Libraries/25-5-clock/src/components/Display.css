@@ -1,0 +1,14 @@
+.Display {
+    padding: 0 10px;
+}
+
+#time-left {
+    font-weight: 600;
+    font-size: 8rem;
+}
+
+#timer-label {
+    font-weight: 400;
+    font-size: 4rem;
+    margin-bottom: -4rem;
+}

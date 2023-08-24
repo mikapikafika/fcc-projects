@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Genos:wght@200;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Genos", sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(to right, #eed991, #ccf7f4);
+    color: #3d3d3d;
+}

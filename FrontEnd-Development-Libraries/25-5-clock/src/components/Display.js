@@ -1,4 +1,5 @@
 import {useSelector} from "react-redux";
+import './Display.css';
 
 function Display() {
     const { isRunning, timeLeft } = useSelector(state => state);

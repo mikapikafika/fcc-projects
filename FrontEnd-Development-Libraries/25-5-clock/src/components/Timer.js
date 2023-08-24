@@ -1,6 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {reset, startStop, tick} from "../redux/actions";
+import './Timer.css';
 
 function Timer() {
     const dispatch = useDispatch();
@@ -24,10 +25,9 @@ function Timer() {
             beepSound.play();
 
             // Switching between sessions
-
         }
         return () => clearInterval(interval);
-    }, [isRunning, timeLeft, dispatch]);
+    }, [isRunning, timeLeft, dispatch, sessionLength, breakLength]);
 
     const handleStartStop = () => {
         dispatch(startStop())
@@ -41,13 +41,13 @@ function Timer() {
     };
 
     return (
-      <div className="Timer">
-          <button id="start_stop" onClick={handleStartStop}>
-              {isRunning ? "Pause" : "Start"}
-          </button>
-          <button id="reset" onClick={handleReset}>Reset</button>
-          <audio id="beep" src="."/>
-      </div>
+        <div className="Timer">
+            <button id="start_stop" className="btn" onClick={handleStartStop}>
+                {isRunning ? "Pause" : "Start"}
+            </button>
+            <button id="reset" className="btn" onClick={handleReset}>Reset</button>
+            <audio id="beep" src="."/>
+        </div>
     );
 }
 
