@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 $main-font: "Bebas Neue", sans-serif;
 $color-pool: (
         #ff3c3c, #f5a041, #f3f84d, #75fc57, #4fefff, #5795fa, #8b78ff, #fc7efc, #fc7ebb
@@ -41,4 +43,22 @@ body {
 #display {
   color: white;
   font-size: 3rem;
+}
+
+.copyright {
+  margin-top: 2rem;
+  color: white;
+  font-size: 1.5rem;
+
+  .important {
+    color: #1d1a41;
+  }
+
+  a {
+    color: white;
+
+    &:hover {
+      color: #1d1a41;
+    }
+  }
 }

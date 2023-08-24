@@ -11,12 +11,30 @@ body {
   background: linear-gradient(to right, #a8c0ff, #3f2b96);
 }
 
-.App {
+.elements {
   display: flex;
   justify-content: center;
   align-items: center;
 
   > :not(:last-child) {
     margin-right: 20px;
+  }
+}
+
+.copyright {
+  margin-top: 2rem;
+  color: white;
+  font-size: 1rem;
+
+  .important {
+    color: #26156e;
+  }
+
+  a {
+    color: white;
+
+    &:hover {
+      color: #26156e;
+    }
   }
 }

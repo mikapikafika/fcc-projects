@@ -25,8 +25,8 @@ function Timer() {
 
             // Switching between sessions
 
-            return () => clearInterval(interval);
         }
+        return () => clearInterval(interval);
     }, [isRunning, timeLeft, dispatch]);
 
     const handleStartStop = () => {
@@ -39,10 +39,6 @@ function Timer() {
         beepSound.pause();
         beepSound.currentTime = 0;
     };
-
-    const mins = Math.floor(timeLeft / 60);
-    const secs = timeLeft % 60;
-    const formattedTime = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
 
     return (
       <div className="Timer">

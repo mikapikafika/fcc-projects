@@ -33,13 +33,19 @@ function App() {
 
     return (
         <div className="App">
-            <Editor
-                markdownText={markdownText}
-                setMarkdownText={setMarkdownText}
-            />
-            <Preview
-                markdownText={markdownText}
-            />
+            <div className="elements">
+                <Editor
+                    markdownText={markdownText}
+                    setMarkdownText={setMarkdownText}
+                />
+                <Preview
+                    markdownText={markdownText}
+                />
+            </div>
+            <div className="copyright text-center mt-4">Coded by <span className="important">Michalina Wysocka</span>;
+                <a href="https://github.com/mikapikafika/fcc-projects" className="text-decoration-none">
+                     <i className="fa fa-github" aria-hidden="true"></i> repo</a>
+            </div>
         </div>
     );
 }

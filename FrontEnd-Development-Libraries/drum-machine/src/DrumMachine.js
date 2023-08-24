@@ -92,6 +92,10 @@ function DrumMachine() {
                 <div id="display" className="Display text-center mt-4">
                     {displayedText || "Click/press a letter"}
                 </div>
+                <div className="copyright text-center mt-4">Coded by <span className="important">Michalina Wysocka</span>;
+                    <a href="https://github.com/mikapikafika/fcc-projects" className="text-decoration-none">
+                        <i className="fa fa-github" aria-hidden="true"></i> repo</a>
+                </div>
             </div>
         </div>
     );
