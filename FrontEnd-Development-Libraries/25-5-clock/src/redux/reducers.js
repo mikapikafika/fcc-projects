@@ -10,25 +10,29 @@ const timerReducer = (state = initialState, action) => {
         case 'INCREMENT_BREAK':
             return {
                 ...state,
-                breakLength: Math.min(state.breakLength + 1, 60)
+                breakLength: Math.min(state.breakLength + 1, 60),
+                timeLeft: state.isRunning ? state.timeLeft : (state.breakLength + 1) * 60
             };
 
         case 'DECREMENT_BREAK':
             return {
                 ...state,
-                breakLength: Math.max(state.breakLength - 1, 1)
+                breakLength: Math.max(state.breakLength - 1, 1),
+                timeLeft: state.isRunning ? state.timeLeft : (state.breakLength - 1) * 60
             };
 
         case 'INCREMENT_SESSION':
             return {
                 ...state,
-                sessionLength: Math.min(state.sessionLength + 1, 60)
+                sessionLength: Math.min(state.sessionLength + 1, 60),
+                timeLeft: state.isRunning ? state.timeLeft : (state.sessionLength + 1) * 60
             };
 
         case 'DECREMENT_SESSION':
             return {
                 ...state,
-                sessionLength: Math.max(state.sessionLength - 1, 1)
+                sessionLength: Math.max(state.sessionLength - 1, 1),
+                timeLeft: state.isRunning ? state.timeLeft : (state.sessionLength - 1) * 60
             };
 
         case 'START_STOP':
