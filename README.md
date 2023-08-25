@@ -2,7 +2,7 @@
 A repository for all the mini-projects that are a part of freeCodeCamp certification.
 
 ##
-## FrontEnd Development Libraries
+## FrontEnd Development Libraries Certification
 A course teaching some of the more popular frontend libraries, such as Bootstrap, jQuery, SASS, React and Redux.<br>
 
 ##
