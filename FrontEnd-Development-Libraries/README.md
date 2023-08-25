@@ -13,3 +13,6 @@ Preview the projects by clicking the replit link present in each description (th
  
 ### javascript-calculator
 > An [online calculator](https://javascript-calculator.mikapikafika.repl.co), not that anyone would ever need that. Was more difficult than the previous projects to implement though. Made using React and Redux.
+
+### 25+5-clock
+> WIP
