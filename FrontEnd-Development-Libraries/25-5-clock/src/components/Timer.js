@@ -2,6 +2,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {reset, startStop, tick} from "../redux/actions";
 import './Timer.css';
+import beep from './beep.mp3';
 
 function Timer() {
     const dispatch = useDispatch();
@@ -46,7 +47,7 @@ function Timer() {
                 {isRunning ? "Pause" : "Start"}
             </button>
             <button id="reset" className="btn" onClick={handleReset}>Reset</button>
-            <audio id="beep" src="."/>
+            <audio id="beep" src={beep}/>
         </div>
     );
 }
